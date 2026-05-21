@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shine and Dandy Cleaning Co. | Southeast Michigan & Toledo</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #e8508a;
+    --pink-light: #f4a0c0;
+    --pink-pale: #fce8f0;
+    --pink-soft: #fdf0f6;
+    --charcoal: #2d2d2d;
+    --gray: #888;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; color: var(--charcoal); background: var(--white); overflow-x: hidden; }
+
+  /* FLOATING BUTTONS */
+  .float-contact { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .float-btn { display: flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 50px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; box-shadow: 0 8px 30px rgba(0,0,0,0.2); transition: all 0.3s; white-space: nowrap; }
+  .float-btn-call { background: var(--charcoal); color: white; }
+  .float-btn-quote { background: var(--pink); color: white; }
+  .float-btn:hover { transform: translateY(-3px); }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 12px 60px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232,80,138,0.12); box-shadow: 0 2px 20px rgba(232,80,138,0.08); }
+  .nav-logo { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--pink); }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; font-size: 0.68rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--charcoal); transition: color 0.3s; }
+  .nav-links a:hover { color: var(--pink); }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-phone { font-size: 0.75rem; font-weight: 700; color: var(--pink); text-decoration: none; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .nav-cta { background: var(--pink); color: white !important; padding: 10px 22px; border-radius: 30px; text-decoration: none; font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; }
+  .nav-cta:hover { background: #c03d73; transform: translateY(-1px); }
+
+  /* CONTACT BAR */
+  .contact-bar { background: var(--charcoal); padding: 14px 60px; display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; margin-top: 88px; }
+  .contact-bar-item { display: flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.3s; }
+  .contact-bar-item:hover { color: var(--pink-light); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #fff9fc 0%, #fce8f0 40%, #fff 100%); }
+  .hero-sparkles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .sparkle { position: absolute; color: var(--pink-light); font-size: 1.2rem; animation: twinkle 3s ease-in-out infinite; opacity: 0; }
+  @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); } 50% { opacity: 0.7; transform: scale(1.2) rotate(180deg); } }
+  .hero-content { text-align: center; z-index: 2; padding: 0 20px; animation: fadeUp 1s ease 0.2s both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-logo-text { font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 10vw, 7rem); color: var(--pink); line-height: 1.1; margin-bottom: 4px; text-shadow: 2px 2px 20px rgba(232,80,138,0.15); }
+  .hero-sub { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; }
+  .hero-sub .line { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--pink-light)); }
+  .hero-sub .line:last-child { background: linear-gradient(90deg, var(--pink-light), transparent); }
+  .hero-company { font-size: 0.9rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--charcoal); }
+  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 300; font-style: italic; color: var(--gray); margin-bottom: 16px; }
+  .hero-tagline span { color: var(--pink); font-style: normal; font-weight: 600; }
+  .hero-phone { font-size: 1.3rem; font-weight: 800; color: var(--charcoal); margin-bottom: 36px; }
+  .hero-phone a { color: var(--pink); text-decoration: none; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--pink); color: white; padding: 16px 38px; border: none; border-radius: 40px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 30px rgba(232,80,138,0.35); }
+  .btn-primary:hover { background: #c03d73; transform: translateY(-3px); }
+  .btn-secondary { background: transparent; color: var(--pink); padding: 16px 38px; border: 2px solid var(--pink-light); border-radius: 40px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.3s; }
+  .btn-secondary:hover { background: var(--pink-pale); border-color: var(--pink); }
+  .hero-badges { margin-top: 44px; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+  .badge { display: flex; align-items: center; gap: 8px; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
+
+  /* CONTACT NOW BANNER */
+  .contact-now-banner { background: linear-gradient(135deg, var(--pink), #c03d73); padding: 40px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .contact-now-text h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300; color: white; margin-bottom: 6px; }
+  .contact-now-text p { font-size: 0.78rem; color: rgba(255,255,255,0.75); letter-spacing: 1px; }
+  .contact-now-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-white-solid { background: white; color: var(--pink); padding: 14px 32px; border-radius: 40px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,0,0,0.15); white-space: nowrap; }
+  .btn-white-solid:hover { transform: translateY(-2px); }
+  .btn-white-outline { background: transparent; color: white; padding: 14px 32px; border-radius: 40px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border: 2px solid rgba(255,255,255,0.6); transition: all 0.3s; white-space: nowrap; }
+  .btn-white-outline:hover { background: rgba(255,255,255,0.15); border-color: white; }
+
+  /* SECTIONS */
+  .section { padding: 100px 60px; }
+  .section-label { text-align: center; font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--pink); margin-bottom: 14px; }
+  .section-title { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 300; color: var(--charcoal); margin-bottom: 16px; line-height: 1.2; }
+  .section-title em { font-style: italic; color: var(--pink); }
+  .section-divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--pink-light), var(--pink)); margin: 0 auto 60px; border-radius: 2px; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; }
+  .service-card { background: var(--white); border: 1px solid rgba(232,80,138,0.12); border-radius: 20px; padding: 44px 36px; text-align: center; transition: all 0.4s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--pink-soft), transparent); opacity: 0; transition: opacity 0.4s; }
+  .service-card:hover { transform: translateY(-8px); border-color: var(--pink-light); box-shadow: 0 20px 60px rgba(232,80,138,0.15); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; position: relative; }
+  .service-card h3 { font-size: 0.82rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--charcoal); margin-bottom: 14px; position: relative; }
+  .service-card p { font-size: 0.88rem; line-height: 1.75; color: var(--gray); position: relative; }
+  .service-card-accent { width: 30px; height: 2px; background: var(--pink); margin: 16px auto 0; border-radius: 2px; }
+
+  /* PRICING */
+  .pricing-section { background: var(--pink-soft); padding: 100px 60px; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; max-width: 1000px; margin: 0 auto; }
+  .pricing-card { background: white; border-radius: 24px; padding: 44px 36px; text-align: center; border: 2px solid transparent; transition: all 0.4s; box-shadow: 0 4px 30px rgba(232,80,138,0.08); position: relative; overflow: hidden; }
+  .pricing-card.featured { border-color: var(--pink); box-shadow: 0 12px 50px rgba(232,80,138,0.2); }
+  .pricing-card.featured::before { content: '✦ Most Popular ✦'; position: absolute; top: 0; left: 0; right: 0; background: var(--pink); color: white; font-size: 0.6rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 8px; text-align: center; }
+  .pricing-card.featured { padding-top: 56px; }
+  .pricing-card:hover { transform: translateY(-6px); }
+  .pricing-icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+  .pricing-card h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--charcoal); margin-bottom: 12px; }
+  .pricing-price { font-family: 'Great Vibes', cursive; font-size: 2.4rem; color: var(--pink); line-height: 1; margin-bottom: 8px; }
+  .pricing-note { font-size: 0.72rem; color: var(--gray); margin-bottom: 20px; }
+  .pricing-features { list-style: none; margin-bottom: 28px; }
+  .pricing-features li { font-size: 0.82rem; color: var(--gray); padding: 7px 0; border-bottom: 1px solid rgba(232,80,138,0.08); display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .pricing-features li::before { content: '✦'; color: var(--pink-light); font-size: 0.6rem; }
+  .btn-quote { display: inline-block; background: var(--pink); color: white; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; }
+  .btn-quote:hover { background: #c03d73; transform: translateY(-2px); }
+  .btn-quote-outline { display: inline-block; background: transparent; color: var(--pink); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; border: 2px solid var(--pink-light); cursor: pointer; font-family: 'Montserrat', sans-serif; }
+  .btn-quote-outline:hover { background: var(--pink-pale); border-color: var(--pink); }
+
+  /* WHY US */
+  .why-section { background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); color: white; padding: 100px 60px; position: relative; overflow: hidden; }
+  .why-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(232,80,138,0.2) 0%, transparent 70%); pointer-events: none; }
+  .why-section .section-title { color: white; }
+  .why-section .section-label { color: var(--pink-light); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
+  .why-item { text-align: center; padding: 20px; }
+  .why-number { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--pink); line-height: 1; margin-bottom: 8px; }
+  .why-item h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: white; margin-bottom: 12px; }
+  .why-item p { font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.55); }
+
+  /* SERVICE AREA */
+  .area-section { padding: 100px 60px; background: white; }
+  .area-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; margin: 0 auto; align-items: start; }
+  .area-map { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(232,80,138,0.15); border: 2px solid var(--pink-pale); aspect-ratio: 4/3; }
+  .area-map iframe { width: 100%; height: 100%; border: none; display: block; }
+  .area-cities h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--charcoal); margin-bottom: 8px; }
+  .area-cities h3 em { color: var(--pink); font-style: italic; }
+  .area-cities p { font-size: 0.85rem; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
+  .city-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .city-tag { background: var(--pink-pale); color: var(--pink); padding: 7px 16px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* PROCESS */
+  .process-section { background: var(--pink-soft); padding: 100px 60px; }
+  .process-steps { display: flex; gap: 0; max-width: 900px; margin: 0 auto; position: relative; flex-wrap: wrap; justify-content: center; }
+  .process-steps::before { content: ''; position: absolute; top: 36px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, var(--pink-light), var(--pink), var(--pink-light)); }
+  .step { flex: 1; min-width: 160px; max-width: 200px; text-align: center; padding: 0 16px; position: relative; }
+  .step-number { width: 72px; height: 72px; border-radius: 50%; background: var(--white); border: 2px solid var(--pink-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--pink); position: relative; z-index: 1; transition: all 0.3s; }
+  .step:hover .step-number { background: var(--pink); color: white; border-color: var(--pink); transform: scale(1.1); }
+  .step h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--charcoal); margin-bottom: 10px; }
+  .step p { font-size: 0.82rem; line-height: 1.65; color: var(--gray); }
+
+  /* TESTIMONIALS */
+  .testimonials-section { padding: 100px 60px; background: white; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; }
+  .testimonial-card { background: var(--pink-soft); border-radius: 20px; padding: 40px; position: relative; }
+  .testimonial-card::before { content: 'C'; font-family: 'Great Vibes', cursive; font-size: 5rem; color: var(--pink-light); position: absolute; top: 10px; left: 28px; line-height: 1; opacity: 0.8; }
+  .stars { color: var(--pink); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 3px; }
+  .testimonial-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; line-height: 1.75; color: var(--charcoal); margin-bottom: 20px; }
+  .testimonial-author { font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--pink); }
+
+  /* BOOKING FORM */
+  .contact-section { background: linear-gradient(135deg, var(--pink) 0%, #c03d73 100%); padding: 100px 60px; text-align: center; position: relative; overflow: hidden; }
+  .contact-section::before { content: ''; position: absolute; top: -80px; left: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); }
+  .contact-section .section-label { color: rgba(255,255,255,0.7); }
+  .contact-section .section-title { color: white; }
+  .contact-form { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 16px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); color: white; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; outline: none; transition: background 0.3s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.6); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { background: rgba(255,255,255,0.25); }
+  .contact-form select option { color: var(--charcoal); background: white; }
+  .contact-form textarea { min-height: 120px; resize: vertical; }
+  .form-status { font-size: 0.82rem; padding: 14px; border-radius: 10px; display: none; margin-top: 4px; }
+  .form-status.success { background: rgba(255,255,255,0.2); color: white; display: block; font-weight: 600; }
+  .form-status.error { background: rgba(0,0,0,0.2); color: white; display: block; }
+  .btn-white { background: white; color: var(--pink); padding: 16px 40px; border: none; border-radius: 40px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 30px rgba(0,0,0,0.15); margin-top: 8px; }
+  .btn-white:hover { transform: translateY(-3px); }
+  .btn-white:disabled { opacity: 0.7; cursor: not-allowed; }
+
+  /* FOOTER */
+  footer { background: var(--charcoal); color: white; padding: 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-logo { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--pink-light); }
+  .footer-tagline { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 6px; }
+  .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--pink-light); }
+  .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .social-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 1rem; transition: all 0.3s; }
+  .social-btn:hover { background: var(--pink); border-color: var(--pink); color: white; }
+  .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) { .area-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .nav-phone { display: none; }
+    .contact-bar { padding: 12px 20px; gap: 16px; margin-top: 72px; }
+    .section, .why-section, .process-section, .testimonials-section, .contact-section, .pricing-section, .area-section { padding: 70px 24px; }
+    .contact-now-banner { padding: 32px 24px; }
+    footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+    .footer-right { align-items: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+    .float-contact { bottom: 16px; right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-contact">
+  <a href="tel:5172604549" class="float-btn float-btn-call">📞 Call Now</a>
+  <a href="#contact" class="float-btn float-btn-quote">✦ Free Quote</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shine & Dandy</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#area">Service Area</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Book Now</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:5172604549" class="nav-phone">📞 (517) 260-4549</a>
+    <a href="#contact" class="nav-cta">Free Quote</a>
+  </div>
+</nav>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <a href="tel:5172604549" class="contact-bar-item">📞 (517) 260-4549</a>
+  <a href="mailto:shineanddandycleaning@gmail.com" class="contact-bar-item">✉️ shineanddandycleaning@gmail.com</a>
+  <a href="https://www.facebook.com/share/18wQqKj6a4/?mibextid=wwXIfr" target="_blank" class="contact-bar-item">📘 Find Us on Facebook</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-sparkles">
+    <span class="sparkle" style="top:15%;left:8%;animation-delay:0s">✦</span>
+    <span class="sparkle" style="top:25%;left:20%;animation-delay:0.7s">✧</span>
+    <span class="sparkle" style="top:10%;left:75%;animation-delay:1.2s">✦</span>
+    <span class="sparkle" style="top:60%;left:5%;animation-delay:0.4s">✧</span>
+    <span class="sparkle" style="top:70%;left:90%;animation-delay:1.8s">✦</span>
+    <span class="sparkle" style="top:40%;left:92%;animation-delay:0.9s">✧</span>
+    <span class="sparkle" style="top:80%;left:35%;animation-delay:2.1s">✦</span>
+    <span class="sparkle" style="top:20%;left:50%;animation-delay:1.5s">✧</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-logo-text">Shine and Dandy</div>
+    <div class="hero-sub">
+      <div class="line"></div>
+      <div class="hero-company">Cleaning Co.</div>
+      <div class="line"></div>
+    </div>
+    <div class="hero-tagline">Southeast Michigan & Toledo — <span>Clean Spaces. Strong Impressions.</span></div>
+    <div class="hero-phone">📞 <a href="tel:5172604549">(517) 260-4549</a></div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">✦ Book a Free Quote</a>
+      <a href="tel:5172604549" class="btn-secondary">📞 Call Us Now</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><div class="badge-dot"></div>Detail-Oriented</div>
+      <div class="badge"><div class="badge-dot"></div>Fully Insured</div>
+      <div class="badge"><div class="badge-dot"></div>Satisfaction Guaranteed</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT NOW BANNER -->
+<div class="contact-now-banner">
+  <div class="contact-now-text">
+    <h3>Ready for a <em>Spotless</em> Space?</h3>
+    <p>Call or text us today — we respond within the hour.</p>
+  </div>
+  <div class="contact-now-actions">
+    <a href="tel:5172604549" class="btn-white-solid">📞 (517) 260-4549</a>
+    <a href="#contact" class="btn-white-outline">Book a Free Quote</a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Our <em>Cleaning</em> Services</h2>
+  <div class="section-divider"></div>
+  <div class="services-grid">
+    <div class="service-card reveal"><span class="service-icon">🏢</span><h3>Commercial Cleaning</h3><p>Spotless, professional results for retail spaces, warehouses, and commercial properties of any size.</p><div class="service-card-accent"></div></div>
+    <div class="service-card reveal"><span class="service-icon">💼</span><h3>Office Cleaning</h3><p>A clean office boosts morale and productivity. Regular or one-time deep cleans tailored to your schedule.</p><div class="service-card-accent"></div></div>
+    <div class="service-card reveal"><span class="service-icon">🏡</span><h3>Residential Cleaning</h3><p>Weekly, bi-weekly, or move-in/move-out — we treat every home as if it were our own.</p><div class="service-card-accent"></div></div>
+    <div class="service-card reveal"><span class="service-icon">✨</span><h3>Deep Cleaning</h3><p>Top to bottom — baseboards, appliances, grout lines, and all the spots others miss.</p><div class="service-card-accent"></div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="section-label">Transparent & Simple</div>
+  <h2 class="section-title">Get a <em>Free Quote</em></h2>
+  <div class="section-divider"></div>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal"><span class="pricing-icon">🏡</span><h3>Residential</h3><div class="pricing-price">Quote</div><div class="pricing-note">Tailored to your home's size & needs</div><ul class="pricing-features"><li>Standard & Deep Clean Options</li><li>Weekly, Bi-Weekly or One-Time</li><li>Move-In / Move-Out Available</li><li>All Supplies Included</li></ul><a href="#contact" class="btn-quote-outline">Get a Free Quote</a></div>
+    <div class="pricing-card featured reveal"><span class="pricing-icon">💼</span><h3>Office Cleaning</h3><div class="pricing-price">Quote</div><div class="pricing-note">Priced per sq ft & frequency</div><ul class="pricing-features"><li>Before or After Hours Available</li><li>Recurring Contracts Welcome</li><li>Restrooms, Kitchens & Common Areas</li><li>Fully Insured & Professional</li></ul><a href="#contact" class="btn-quote">Get a Free Quote</a></div>
+    <div class="pricing-card reveal"><span class="pricing-icon">🏢</span><h3>Commercial</h3><div class="pricing-price">Quote</div><div class="pricing-note">Custom pricing for any size space</div><ul class="pricing-features"><li>Retail, Warehouses & More</li><li>Flexible Scheduling</li><li>One-Time or Ongoing Service</li><li>Free On-Site Assessment</li></ul><a href="#contact" class="btn-quote-outline">Get a Free Quote</a></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="section-label">Why Shine & Dandy</div>
+  <h2 class="section-title">We Don't Just Clean — <em>We Impress</em></h2>
+  <div class="section-divider" style="background: linear-gradient(90deg, rgba(244,160,192,0.4), var(--pink-light))"></div>
+  <div class="why-grid">
+    <div class="why-item reveal"><div class="why-number">100%</div><h4>Satisfaction Guaranteed</h4><p>Not happy? We'll come back and make it right — no questions asked.</p></div>
+    <div class="why-item reveal"><div class="why-number">5★</div><h4>5-Star Rated</h4><p>Consistently praised for attention to detail and reliability.</p></div>
+    <div class="why-item reveal"><div class="why-number">✓</div><h4>Fully Insured</h4><p>Every job is fully insured for your peace of mind.</p></div>
+    <div class="why-item reveal"><div class="why-number">♻</div><h4>Eco-Friendly</h4><p>Green cleaning solutions safe for families, pets, and the environment.</p></div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section id="area" class="area-section">
+  <div class="section-label">Where We Serve</div>
+  <h2 class="section-title">Southeast Michigan <em>&amp; Toledo</em></h2>
+  <div class="section-divider"></div>
+  <div class="area-grid">
+    <div class="area-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d386254.3!2d-83.4!3d42.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ca0110cb1d75%3A0x5776864e35b9c4d2!2sDetroit%2C%20MI!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="area-cities">
+      <h3>We Come <em>To You</em></h3>
+      <p>Proudly serving homeowners, offices, and businesses across Southeast Michigan and greater Toledo. Not sure if we cover your area? Give us a call — we'll make it work.</p>
+      <div class="city-tags">
+        <span class="city-tag">Monroe</span>
+        <span class="city-tag">Toledo, OH</span>
+        <span class="city-tag">Tecumseh</span>
+        <span class="city-tag">Clinton</span>
+        <span class="city-tag">Manchester</span>
+        <span class="city-tag">Saline</span>
+        <span class="city-tag">Ann Arbor</span>
+        <span class="city-tag">Milan</span>
+        <span class="city-tag">Dundee</span>
+        <span class="city-tag">Onsted</span>
+        <span class="city-tag">Blissfield</span>
+      </div>
+      <a href="tel:5172604549" class="btn-primary">📞 Call to Check Your Area</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" class="process-section">
+  <div class="section-label">Simple & Easy</div>
+  <h2 class="section-title">How It <em>Works</em></h2>
+  <div class="section-divider"></div>
+  <div class="process-steps">
+    <div class="step reveal"><div class="step-number">1</div><h4>Request a Quote</h4><p>Fill out our quick form or call us. We'll respond within the hour.</p></div>
+    <div class="step reveal"><div class="step-number">2</div><h4>We Show Up</h4><p>Our team arrives on time, fully equipped with premium supplies.</p></div>
+    <div class="step reveal"><div class="step-number">3</div><h4>We Clean</h4><p>Every corner, every surface — cleaned to our exacting standard.</p></div>
+    <div class="step reveal"><div class="step-number">4</div><h4>You Enjoy</h4><p>Walk into a space that feels brand new. Sit back and enjoy.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials-section">
+  <div class="section-label">Happy Clients</div>
+  <h2 class="section-title">What People Are <em>Saying</em></h2>
+  <div class="section-divider"></div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal"><div class="stars">★★★★★</div><p>I booked them for a deep clean before selling my house and they absolutely transformed the space. Worth every penny — my realtor was stunned.</p><div class="testimonial-author">— Michelle T., Homeowner</div></div>
+    <div class="testimonial-card reveal"><div class="stars">★★★★★</div><p>Our office has never looked this good. The team is professional, thorough, and always on time. I can't imagine using anyone else.</p><div class="testimonial-author">— James R., Office Manager</div></div>
+    <div class="testimonial-card reveal"><div class="stars">★★★★★</div><p>They pay attention to things other cleaners overlook. The little details make a huge difference and my clients always comment on how immaculate the space is.</p><div class="testimonial-author">— Sandra K., Property Owner</div></div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="contact" class="contact-section">
+  <div class="section-label">Let's Get Started</div>
+  <h2 class="section-title" style="margin-bottom:10px">Book a <em style="font-style:italic;color:rgba(255,255,255,0.85)">Free Quote</em></h2>
+  <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;margin-bottom:50px;letter-spacing:1px;position:relative;z-index:1;">We'll respond within the hour. Or call/text us at <a href="tel:5172604549" style="color:white;font-weight:700;">(517) 260-4549</a></p>
+  <form class="contact-form" id="bookingForm">
+    <div class="form-row">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+    </div>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <select name="service" required>
+      <option value="" disabled selected>Select Service Type</option>
+      <option>Residential Cleaning</option>
+      <option>Office Cleaning</option>
+      <option>Commercial Cleaning</option>
+      <option>Deep Cleaning</option>
+      <option>Move-In / Move-Out</option>
+    </select>
+    <input type="text" name="location" placeholder="Your City / Area">
+    <input type="text" name="date" placeholder="Preferred Date & Time">
+    <textarea name="message" placeholder="Tell us about your space — size, any special requests..."></textarea>
+    <div class="form-status" id="formStatus"></div>
+    <button type="submit" class="btn-white" id="submitBtn">✦ Request My Free Quote</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Shine & Dandy</div>
+    <div class="footer-tagline">Cleaning Co. · Southeast Michigan & Toledo</div>
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#area">Service Area</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Book Now</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://www.facebook.com/share/18wQqKj6a4/?mibextid=wwXIfr" target="_blank" class="social-btn">f</a>
+    <a href="tel:5172604549" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.75rem;font-weight:700;">(517) 260-4549</a>
+    <div class="footer-copy">© 2025 Shine and Dandy Cleaning Co.</div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  const form = document.getElementById('bookingForm');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://formspree.io/f/xqejqprq', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        statusEl.textContent = '✦ Thank you! We will be in touch within the hour about your free quote.';
+        statusEl.className = 'form-status success';
+        statusEl.style.display = 'block';
+        form.reset();
+      } else { throw new Error(); }
+    } catch {
+      statusEl.textContent = 'Something went wrong. Please call us at (517) 260-4549';
+      statusEl.className = 'form-status error';
+      statusEl.style.display = 'block';
+    }
+    submitBtn.disabled = false;
+    submitBtn.textContent = '✦ Request My Free Quote';
+  });
+</script>
+</body>
+</html>
