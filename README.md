@@ -560,7 +560,7 @@
     <span class="sparkle" style="top:20%;left:50%;animation-delay:1.5s">✧</span>
   </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">✦ Metro Detroit's Premier Cleaning Service ✦</div>
+    <div class="hero-eyebrow">✦ Tecumseh's Premier Cleaning Service ✦</div>
     <div class="hero-title">Shine and Dandy</div>
     <div class="hero-subtitle-block">
       <div class="line"></div>
@@ -719,7 +719,7 @@
 <footer>
   <div>
     <div class="footer-logo">Shine & Dandy</div>
-    <div class="footer-tagline">Cleaning Co. · Metro Detroit</div>
+    <div class="footer-tagline">Cleaning Co. · Tecumseh </div>
   </div>
   <div class="footer-links">
     <a href="#services">Services</a>
